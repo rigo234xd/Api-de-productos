@@ -4,6 +4,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+# ---------------------------
+# CORS (permite peticiones desde React)
+# ---------------------------
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,7 +16,14 @@ app.add_middleware(
 )
 
 # ---------------------------
-# MODEL
+# RUTA RAÍZ (para evitar el 404)
+# ---------------------------
+@app.get("/")
+def home():
+    return {"message": "API funcionando correctamente"}
+
+# ---------------------------
+# MODELO
 # ---------------------------
 class Producto(BaseModel):
     nombre: str
