@@ -28,6 +28,8 @@ def home():
 class Producto(BaseModel):
     nombre: str
     precio: float
+    imagen: str  
+
 
 # "Base de datos" temporal en memoria
 productos = [
